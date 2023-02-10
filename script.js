@@ -1,3 +1,8 @@
+let rock = document.querySelector("#rock");
+let paper = document.querySelector("#paper");
+let scissors = document.querySelector("#scissors");
+let output = document.querySelector("#output");
+
 function getComputerChoice(){
     var x = Math.floor(Math.random() * 3);
     if (x == 0){
@@ -7,28 +12,36 @@ function getComputerChoice(){
     } else {
         return "scissors";
     }
-
+    
 };
 
-var playerSelection = prompt("");
-playerSelection = playerSelection.toLowerCase();
-var computerSelection = getComputerChoice();
+
+/* var playerSelection = prompt(""); 
+playerSelection = playerSelection.toLowerCase();*/
+
+rock.addEventListener("click",()=>{playRound("rock",getComputerChoice())});
+paper.addEventListener("click",()=>{playRound("paper",getComputerChoice())});
+scissors.addEventListener("click",()=>{playRound("scissors",getComputerChoice())});
+
 
 function playRound(playerSelection, computerSelection) {
-    if (playerSelection.toLowerCase == computerSelection) {
-        return "Draw!";
+    if (playerSelection == computerSelection) {
+        console.log("Draw!");
+        output.innerHTML = "Draw!";
     } else if ((computerSelection == "rock" && playerSelection == "scissors") ||
     (computerSelection == "scissors" && playerSelection == "paper") ||
     (computerSelection == "paper" && playerSelection == "rock")){
-        return `You Lose! ${computerSelection} beats ${playerSelection}`;
+        console.log(`You Lose! ${computerSelection} beats ${playerSelection}`);
+        output.innerHTML =`You Lose! ${computerSelection} beats ${playerSelection}`;
     } else {
-        return `You Win! ${playerSelection} beats ${computerSelection}`;
+        console.log(`You Win! ${playerSelection} beats ${computerSelection}`);
+        output.innerHTML =`You Win! ${playerSelection} beats ${computerSelection}`;
     }
 }
 var dScore=0;
 var cScore=0;
 var pScore=0;
-for (let i =0; i < 5; i++) {
+/* for (let i =0; i < 5; i++) {
     computerSelection = getComputerChoice();
 
 
@@ -49,4 +62,4 @@ if (cScore > pScore) {
     console.log("Player Won!");
 } else {
     console.log("Draw!");
-}
+} */
